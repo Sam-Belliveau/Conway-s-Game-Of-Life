@@ -2,7 +2,7 @@
 
 ### It looks darker than it really is. (Because of flux :()
 
-### As you can tell, this is reall just for you to play awound with, its that simple.
+### As you can tell, this is reall just for you to play around with, its that simple.
 
 ### You can change grid size to anything, and it will ajust so it is pixle perfect.
-![Image Of Game](https://github.com/Spl1ce/Conway-s-Game-Of-Life/blob/master/Title.png)
+[![Video](https://img.youtube.com/vi/cKo18yeNJNg/0.jpg)](https://www.youtube.com/watch?v=cKo18yeNJNg)
