@@ -244,6 +244,7 @@ public class imageOfBoard extends JFrame {
 		    }
 		    
 		    board = new boolean[(int) Math.sqrt(temp.length)][(int) Math.sqrt(temp.length)];
+		    size.setText(String.valueOf((int) Math.sqrt(temp.length)));
 		    for(int i = 0; i < Math.sqrt(temp.length); i++){
 				for(int ii = 0; ii < Math.sqrt(temp.length); ii++){
 					board[i][ii] = temp[(int) ((i*Math.sqrt(temp.length))+ii)];
