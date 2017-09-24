@@ -258,6 +258,7 @@ public class imageOfBoard extends JFrame {
 			} catch (Exception q) {
 			   board = new boolean[15][15];
 			}
+			updateBoard();
 		}
 	}
 	
