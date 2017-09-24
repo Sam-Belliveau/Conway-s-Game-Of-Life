@@ -17,7 +17,7 @@ public class LifeEngine {
 	
 	private static boolean[][] inputBoard; // Takes input of board and computes changes to outputBoard
 	
-	public static void updateBoard(boolean[][] input){
+	public static void updateBoard(boolean[][] input, boolean loop){
 		inputBoard = new boolean[input[0].length][input[1].length];
 		outputBoard = new boolean[input[0].length][input[1].length];
 		for (int x = 0; x < input[0].length; x++) {
@@ -26,7 +26,7 @@ public class LifeEngine {
 			}
 		}
 		
-		runThroughLoop();
+		runThroughLoop(loop);
 		
 		for (int x = 0; x < input[0].length; x++) {
 			for (int y = 0; y < input[1].length; y++) {
@@ -35,10 +35,10 @@ public class LifeEngine {
 		}
 	}
 	
-	private static void runThroughLoop(){
+	private static void runThroughLoop(boolean loop){
 		for(int x = 0; x < inputBoard[0].length; x++){
 			for(int y = 0; y < inputBoard[1].length; y++){
-				outputBoard[x][y] = checkSpotLife(x, y);
+				outputBoard[x][y] = checkSpotLife(x, y, loop);
 			}
 		}
 	}
@@ -50,9 +50,9 @@ public class LifeEngine {
 	 * 
 	 * 	4.	Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 	 */
-	private static boolean checkSpotLife(int x, int y){ // Rules above will be checked for the spot
+	private static boolean checkSpotLife(int x, int y, boolean loop){ // Rules above will be checked for the spot
 		
-		int neighbors = countNeighbors(x, y);
+		int neighbors = countNeighbors(x, y, loop);
 		
 		
 		// These apply to the rules
@@ -70,7 +70,7 @@ public class LifeEngine {
 		}
 	}
 	
-	private static int countNeighbors(int x, int y){
+	private static int countNeighbors(int x, int y, boolean loop){
 		int neighborCount = 0;
 		int cX, cY; // Cords that it will check
 		
@@ -84,13 +84,19 @@ public class LifeEngine {
 					cY = y + mY;
 					
 					// Checks to see if where it's checking is out of bounds
-					try {
-						if(inputBoard[cX][cY]){
+					if(loop){
+						if(inputBoard[(cX+inputBoard[0].length)%inputBoard[0].length][(cY+inputBoard[1].length)%inputBoard[1].length]){
 							neighborCount++;
 						} 
-					} catch (Exception e){
-						
-					} 
+					} else {
+						try {
+							if(inputBoard[cX][cY]){
+								neighborCount++;
+							} 
+						} catch (Exception e){
+							
+						} 
+					}
 				}
 			}
 		}

@@ -22,6 +22,8 @@ public class imageOfBoard extends JFrame {
 	
 	public JLabel sizeText = new JLabel("Grid Size:");
 	
+	public JCheckBox loop = new JCheckBox("Loop");
+	
 	public imageOfBoard(){
 		setTitle("Conway's Game Of Life");
 		getContentPane().setLayout(null);
@@ -30,13 +32,17 @@ public class imageOfBoard extends JFrame {
 		outImage.setBounds(0, 0, 750, 750);
 		add(outImage);
 		
-		sizeText.setBounds(25, 788, 200, 50);
+		sizeText.setBounds(25, 800, 200, 50);
 		sizeText.setFont(new Font("Arial", Font.BOLD, 30));
 		add(sizeText);
 		
-		size.setBounds(175, 788, 100, 50);
+		size.setBounds(175, 800, 100, 50);
 		size.setFont(new Font("Arial", Font.PLAIN, 24));
 		add(size);
+		
+		loop.setBounds(50, 750, 100, 50);
+		loop.setFont(new Font("Arial", Font.PLAIN, 24));
+		add(loop);
 		
 		reset.setBounds(300, 775, 200, 75);
 		reset.setFont(new Font("Arial", Font.BOLD, 24));
@@ -94,7 +100,7 @@ public class imageOfBoard extends JFrame {
 		
 		boardImage = new BufferedImage(750, 750, BufferedImage.TYPE_INT_RGB);
 		if(playing){
-			LifeEngine.updateBoard(board);
+			LifeEngine.updateBoard(board, loop.isSelected());
 		}
 		for(int x = 0; x < 750; x++){
 			for(int y = 0; y < 750; y++){
