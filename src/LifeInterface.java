@@ -5,7 +5,7 @@ public class LifeInterface {
 		for(;;){
 			image.updateBoard();
 			image.validate();
-			Thread.sleep(250);
+			Thread.sleep(image.getDelay());
 		}
 	}
 }
