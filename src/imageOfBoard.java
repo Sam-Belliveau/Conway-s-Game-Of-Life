@@ -93,6 +93,8 @@ public class imageOfBoard extends JFrame {
 				   } catch (Exception q) {
 					   board = new boolean[15][15];
 				   }
+
+					updateBoard();
 			   }
 			});
 		add(reset);
@@ -247,6 +249,8 @@ public class imageOfBoard extends JFrame {
 					board[i][ii] = temp[(int) ((i*Math.sqrt(temp.length))+ii)];
 				}
 			}
+
+			updateBoard();
 		    inputStream.close();
 		} catch(Exception e){
 			try{

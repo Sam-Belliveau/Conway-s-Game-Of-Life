@@ -3,8 +3,10 @@ public class LifeInterface {
 		imageOfBoard image = new imageOfBoard();
 		image.setVisible(true);
 		for(;;){
-			image.updateBoard();
-			image.validate();
+			if(image.playing){
+				image.updateBoard();
+				image.validate();
+			}
 			Thread.sleep(image.getDelay());
 		}
 	}
